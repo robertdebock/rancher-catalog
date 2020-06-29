@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  awx-lb:
+    image: rancher/lb-service-haproxy:v0.9.14
+    ports:
+      - ${LB_LISTEN_PORT}:8052/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin,agent
+      io.rancher.container.agent_service.drain_provider: 'true'
+      io.rancher.container.create_agent: 'true'

@@ -1,0 +1,8 @@
+---
+name: AWX
+description: AWX, the Ansible web/api controller
+version: 1.0.0
+category: Platform
+maintainer: Robert de Bock <robert@meinit.nl>
+license: Apache-2.0
+projectURL: "https://robertdebock.nl/"

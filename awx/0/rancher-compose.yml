@@ -1,0 +1,36 @@
+version: '2'
+catalog:
+  name: AWX
+  version: 1.0.0
+  description: |
+    AWX provides a web-based user interface, REST API, and task engine built on top of [Ansible](https://github.com/ansible/ansible). It is the upstream project for [Tower](https://www.ansible.com/tower), a commercial derivative of AWX.
+  questions:
+    - variable: LB_LISTEN_PORT
+      label: Load Balancer Listen Port
+      description: |
+        Specify a port for the Load Balancer to listen on (NOTE: AWS Web listens on 8052, but you can specify whatever port is available in your environment)
+      type: int
+      default: 8053
+      required: true
+
+services:
+  awx-lb:
+    scale: 2
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+        - path: ''
+          priority: 1
+          protocol: http
+          service: awx-web
+          source_port: ${LB_LISTEN_PORT}
+          target_port: 8052
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
