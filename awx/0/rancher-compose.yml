@@ -1,6 +1,6 @@
 version: '2'
 catalog:
-  name: AWX13
+  name: AWX
   version: 1.0.0
   description: |
     AWX provides a web-based user interface, REST API, and task engine built on top of [Ansible](https://github.com/ansible/ansible).
