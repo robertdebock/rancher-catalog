@@ -1,6 +1,6 @@
 ---
-name: AWX
-description: AWX, the Ansible web/api controller
+name: AWX 13
+description: AWX provides a web-based user interface, REST API, and task engine built on top of Ansible.
 version: 1.0.0
 category: Platform
 maintainer: Robert de Bock <robert@meinit.nl>
