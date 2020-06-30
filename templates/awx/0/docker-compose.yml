@@ -3,8 +3,14 @@ services:
 
   lb:
     image: rancher/lb-service-haproxy:v0.9.14
+    container_name: awx_lb
+    depends_on:
+      - web
     ports:
       - ${LB_LISTEN_PORT}:8052/tcp
+    restart: unless-stopped
+
+
   web:
     image: ansible/awx:13.0.0
     container_name: awx_web
