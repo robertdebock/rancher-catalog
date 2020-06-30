@@ -1,8 +1,9 @@
+---
 version: '2'
 
 catalog:
   name: OpenSSH
-  version: 0.0.4
+  version: 0.0.5
   description: An OpenSSH server in a container
   questions:
     - variable: SSH_PORT
@@ -15,7 +16,7 @@ catalog:
       label: SSH port on loadbalancer
       description: The TCP port to listen on
       type: int
-      default: 22
+      default: 2222
       required: true
 
 services:
