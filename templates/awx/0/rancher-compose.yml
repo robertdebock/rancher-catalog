@@ -2,7 +2,7 @@ version: '2'
 
 catalog:
   name: AWX
-  version: 0.0.4
+  version: 0.0.5
   description: AWX provides a web-based user interface, REST API, and task engine built on top of [Ansible](https://github.com/ansible/ansible).
   questions:
     - variable: AWX_SECRET_KEY
@@ -58,7 +58,7 @@ services:
       interval: 2000
       reinitializing_timeout: 60000
   web:
-    scale: 2
+    scale: 1
     start_on_create: true
     health_check:
       response_timeout: 2000
