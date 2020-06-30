@@ -16,7 +16,8 @@ services:
       - redis
       - postgres
     ports:
-      - "80:8052"
+      - "80:80"
+      - "8050:8050"
     hostname: awxweb
     user: root
     restart: unless-stopped

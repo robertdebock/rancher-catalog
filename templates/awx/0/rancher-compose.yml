@@ -2,7 +2,7 @@ version: '2'
 
 catalog:
   name: AWX
-  version: 0.0.7
+  version: 0.0.8
   description: AWX provides a web-based user interface, REST API, and task engine built on top of [Ansible](https://github.com/ansible/ansible).
   questions:
     - variable: AWX_SECRET_KEY
@@ -60,7 +60,7 @@ services:
           protocol: http
           service: web
           source_port: ${LB_LISTEN_PORT}
-          target_port: 8052
+          target_port: 80
     health_check:
       response_timeout: 2000
       healthy_threshold: 2
