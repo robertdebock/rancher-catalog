@@ -45,7 +45,7 @@ services:
     image: redis
     container_name: awx_redis
     restart: unless-stopped
-    command: ["/usr/local/etc/redis/redis.conf"]
+    # command: ["/usr/local/etc/redis/redis.conf"]
 
   postgres:
     image: postgres:10
