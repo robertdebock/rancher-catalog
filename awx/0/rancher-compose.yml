@@ -7,12 +7,28 @@ catalog:
   questions:
     - variable: LB_LISTEN_PORT
       label: Load Balancer Listen Port
-      description: |
-        Specify a port for the Load Balancer to listen on (NOTE: AWS Web listens on 8052, but you can specify whatever port is available in your environment)
+      description: Specify a port for the Load Balancer to listen on
       type: int
       default: 8053
       required: true
-
+    - variable: POSTGRES_USER
+      label: PostgreSQL username
+      description: The username for the PostgreSQL database
+      type: string
+      default: awx
+      required: true
+    - variable: POSTGRES_PASSWORD
+      label: PostgreSQL password
+      description: The password for the PostgreSQL database
+      type: string
+      default: awxpass
+      required: true
+    - variable: POSTGRES_DB
+      label: PostgreSQL database name
+      description: The database name for the PostgreSQL database
+      type: string
+      default: awx
+      required: true
 services:
   awx-lb:
     scale: 2

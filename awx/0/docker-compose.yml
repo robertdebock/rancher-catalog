@@ -22,9 +22,9 @@ services:
       - "~/.awx/awxcompose/nginx.conf:/etc/nginx/nginx.conf:ro"
       - "~/.awx/awxcompose/redis_socket:/var/run/redis/:rw"
     environment:
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
+      http_proxy:
+      https_proxy:
+      no_proxy:
 
   task:
     image: ansible/awx:13.0.0
@@ -46,9 +46,9 @@ services:
       - "~/.awx/awxcompose/credentials.py:/etc/tower/conf.d/credentials.py"
       - "~/.awx/awxcompose/redis_socket:/var/run/redis/:rw"
     environment:
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
+      http_proxy:
+      https_proxy:
+      no_proxy:
       SUPERVISOR_WEB_CONFIG_PATH: '/etc/supervisord.conf'
 
   redis:
@@ -56,9 +56,9 @@ services:
     container_name: awx_redis
     restart: unless-stopped
     environment:
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
+      http_proxy:
+      https_proxy:
+      no_proxy:
     command: ["/usr/local/etc/redis/redis.conf"]
     volumes:
       - "~/.awx/awxcompose/redis.conf:/usr/local/etc/redis/redis.conf:ro"
@@ -71,14 +71,13 @@ services:
     volumes:
       - ~/.awx/pgdocker/10/data/:/var/lib/postgresql/data/pgdata:Z
     environment:
-      POSTGRES_USER: awx
-      POSTGRES_PASSWORD: awxpass
-      POSTGRES_DB: awx
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
       PGDATA: /var/lib/postgresql/data/pgdata
-      http_proxy: 
-      https_proxy: 
-      no_proxy: 
-
+      http_proxy:
+      https_proxy:
+      no_proxy:
 
 volumes:
   supervisor-socket:
