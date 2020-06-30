@@ -1,4 +1,5 @@
 version: '2'
+
 catalog:
   name: AWX
   version: 0.0.3

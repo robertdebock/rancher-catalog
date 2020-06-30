@@ -1,6 +1,6 @@
 version: '2'
-services:
 
+services:
   lb:
     image: rancher/lb-service-haproxy:v0.9.14
     container_name: awx_lb
@@ -9,8 +9,6 @@ services:
     ports:
       - ${LB_LISTEN_PORT}:8052/tcp
     restart: unless-stopped
-
-
   web:
     image: ansible/awx:13.0.0
     container_name: awx_web
@@ -26,7 +24,6 @@ services:
       - supervisor-socket:/var/run/supervisor
       - rsyslog-socket:/var/run/awx-rsyslog/
       - rsyslog-config:/var/lib/awx/rsyslog/
-
   task:
     image: ansible/awx:13.0.0
     container_name: awx_task
@@ -50,13 +47,10 @@ services:
       DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_PORT: 5432
       DATABASE_HOST: postgres
-
   redis:
     image: redis
     container_name: awx_redis
     restart: unless-stopped
-    # command: ["/usr/local/etc/redis/redis.conf"]
-
   postgres:
     image: postgres:10
     container_name: awx_postgres
