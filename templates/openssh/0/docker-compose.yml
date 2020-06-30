@@ -14,5 +14,5 @@ services:
     image: robertdebock/docker-centos-openssh
     container_name: openssh
     ports:
-      - ${SSH_LISTEN_PORT}:22/tcp
+      - ${SSH_PORT}:22/tcp
     restart: unless-stopped
