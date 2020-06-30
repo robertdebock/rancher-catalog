@@ -2,7 +2,7 @@
 version: '2'
 
 services:
-  ssh:
+  openssh:
     image: robertdebock/docker-centos-openssh
     container_name: openssh
     ports:
