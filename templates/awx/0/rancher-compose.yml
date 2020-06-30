@@ -45,7 +45,7 @@ services:
         - path: ''
           priority: 1
           protocol: http
-          service: awx-web
+          service: web
           source_port: ${LB_LISTEN_PORT}
           target_port: 8052
     health_check:
