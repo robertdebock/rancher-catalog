@@ -1,6 +1,10 @@
 version: '2'
 services:
 
+  lb:
+    image: rancher/lb-service-haproxy:v0.9.14
+    ports:
+      - ${LB_LISTEN_PORT}:8052/tcp
   web:
     image: ansible/awx:13.0.0
     container_name: awx_web

@@ -36,7 +36,7 @@ catalog:
       required: true
 
 services:
-  awx-lb:
+  lb:
     scale: 2
     start_on_create: true
     lb_config:
