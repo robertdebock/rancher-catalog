@@ -3,7 +3,7 @@ version: '2'
 
 catalog:
   name: OpenSSH
-  version: 0.0.5
+  version: 0.0.6
   description: An OpenSSH server in a container
   questions:
     - variable: SSH_PORT
@@ -20,26 +20,26 @@ catalog:
       required: true
 
 services:
-lb:
-  scale: 2
-  start_on_create: true
-  lb_config:
-    certs: []
-    port_rules:
-      - path: ''
-        priority: 1
-        protocol: tcp
-        service: openssh
-        source_port: ${LOADBALANCER_PORT}
-        target_port: ${SSH_PORT}
-  health_check:
-    response_timeout: 2000
-    healthy_threshold: 2
-    port: 42
-    unhealthy_threshold: 3
-    initializing_timeout: 60000
-    interval: 2000
-    reinitializing_timeout: 60000
+  lb:
+    scale: 2
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+        - path: ''
+          priority: 1
+          protocol: tcp
+          service: openssh
+          source_port: ${LOADBALANCER_PORT}
+          target_port: ${SSH_PORT}
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
 
   openssh:
     scale: 2
