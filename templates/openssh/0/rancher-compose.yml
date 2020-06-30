@@ -1,0 +1,26 @@
+version: '2'
+
+catalog:
+  name: OpenSSH
+  version: 0.0.1
+  description: An OpenSSH server in a container
+  questions:
+    - variable: SSH_LISTEN_PORT
+      label: TCP port
+      description: The TCP port to listen on
+      type: int
+      default: 2222
+      required: true
+
+services:
+  openssh:
+    scale: 2
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 22
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000

@@ -5,12 +5,6 @@ catalog:
   version: 0.0.8
   description: AWX provides a web-based user interface, REST API, and task engine built on top of [Ansible](https://github.com/ansible/ansible).
   questions:
-    - variable: AWX_SECRET_KEY
-      label: Secret key
-      description: A secret key that's used to encrypt sensitive data
-      type: string
-      default: a1b2c3d4e5f6
-      required: true
     - variable: AWX_ADMIN_USER
       label: Administrative user for AWX
       description: The username for the AWX administrator
@@ -22,6 +16,12 @@ catalog:
       description: The password for the AWX administrator
       type: string
       default: awxpass
+      required: true
+    - variable: AWX_SECRET_KEY
+      label: Secret key
+      description: A secret key that's used to encrypt sensitive data
+      type: string
+      default: a1b2c3d4e5f6
       required: true
     - variable: LB_LISTEN_PORT
       label: Load Balancer Listen Port
@@ -87,6 +87,17 @@ services:
       response_timeout: 2000
       healthy_threshold: 2
       port: 6379
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  postgres:
+    scale: 1
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 5432
       unhealthy_threshold: 3
       initializing_timeout: 60000
       interval: 2000
