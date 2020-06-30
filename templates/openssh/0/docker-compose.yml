@@ -2,6 +2,14 @@
 version: '2'
 
 services:
+  lb:
+    image: rancher/lb-service-haproxy:v0.9.14
+    container_name: loadbalancer
+    depends_on:
+      - openssh
+    ports:
+      - ${LOADBALANCER_PORT}:8052/tcp
+    restart: unless-stopped
   openssh:
     image: robertdebock/docker-centos-openssh
     container_name: openssh

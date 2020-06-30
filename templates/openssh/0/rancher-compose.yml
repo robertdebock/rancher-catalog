@@ -11,6 +11,12 @@ catalog:
       type: int
       default: 2222
       required: true
+    - variable: LOADBALANCER_PORT
+      label: TCP port
+      description: The TCP port to listen on
+      type: int
+      default: 22
+      required: true
 
 services:
   openssh:
