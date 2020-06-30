@@ -2,7 +2,7 @@ version: '2'
 
 catalog:
   name: OpenSSH
-  version: 0.0.2
+  version: 0.0.3
   description: An OpenSSH server in a container
   questions:
     - variable: SSH_LISTEN_PORT
