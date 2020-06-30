@@ -11,6 +11,18 @@ catalog:
       type: string
       default: a1b2c3d4e5f6
       required: true
+    - variable: AWX_ADMIN_USER
+      label: Administrative user for AWX
+      description: The username for the AWX administrator
+      type: string
+      default: admin
+      required: true
+    - variable: AWX_ADMIN_PASSWORD
+      label: Administrative password for AWX
+      description: The password for the AWX administrator
+      type: string
+      default: awxpass
+      required: true
     - variable: LB_LISTEN_PORT
       label: Load Balancer Listen Port
       description: Specify a port for the Load Balancer to listen on
